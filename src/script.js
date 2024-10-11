@@ -26,14 +26,26 @@ const sphere = new THREE.Mesh(
 scene.add(sphere);
 
 /**
- * Floor
+ * House
  */
+// Floor
 const floor = new THREE.Mesh(
   new THREE.PlaneGeometry(20, 20),
   new THREE.MeshStandardMaterial()
 );
 floor.rotation.x = -Math.PI * 0.5;
 scene.add(floor);
+
+// House Container
+const house = new THREE.Group();
+scene.add(house);
+
+// Walls
+const walls = new THREE.Mesh(
+    new THREE.BoxGeometry(4,2.5,4),
+    new THREE.MeshStandardMaterial()
+)
+house.add(walls);
 
 /**
  * Lights
