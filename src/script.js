@@ -2,7 +2,6 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { Timer } from "three/addons/misc/Timer.js";
 import GUI from "lil-gui";
-import { color } from "three/examples/jsm/nodes/Nodes.js";
 
 /**
  * Base
@@ -17,12 +16,23 @@ const canvas = document.querySelector("canvas.webgl");
 const scene = new THREE.Scene();
 
 /**
+ * Textures
+ */
+const textureLoader = new THREE.TextureLoader();
+
+// Floor
+const floorAlphaTexture = textureLoader.load("./floor/alpha.jpg");
+
+/**
  * House
  */
 // Floor
 const floor = new THREE.Mesh(
   new THREE.PlaneGeometry(20, 20),
-  new THREE.MeshStandardMaterial()
+  new THREE.MeshStandardMaterial({
+    transparent: true,
+    alphaMap: floorAlphaTexture,
+  })
 );
 floor.rotation.x = -Math.PI * 0.5;
 scene.add(floor);
