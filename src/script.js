@@ -111,6 +111,22 @@ bushNormalTexture.wrapS = THREE.RepeatWrapping;
 
 bushColorTexture.colorSpace = THREE.SRGBColorSpace;
 
+// grave
+const graveColorTexture = textureLoader.load(
+  "./grave/plastered_stone_wall_1k/plastered_stone_wall_diff_1k.jpg"
+);
+const graveARMTexture = textureLoader.load(
+  "./grave/plastered_stone_wall_1k/plastered_stone_wall_arm_1k.jpg"
+);
+const graveNormalTexture = textureLoader.load(
+  "./grave/plastered_stone_wall_1k/plastered_stone_wall_nor_gl_1k.jpg"
+);
+graveColorTexture.repeat.set(0.3, 0.4);
+graveARMTexture.repeat.set(0.3, 0.4);
+graveNormalTexture.repeat.set(0.3, 0.4);
+
+graveColorTexture.colorSpace = THREE.SRGBColorSpace;
+
 /**
  * House
  */
@@ -223,7 +239,13 @@ house.add(bush1, bush2, bush3, bush4);
 
 // Graves
 const graveGeometry = new THREE.BoxGeometry(0.6, 0.8, 0.2);
-const graveMaterial = new THREE.MeshStandardMaterial();
+const graveMaterial = new THREE.MeshStandardMaterial({
+  map: graveColorTexture,
+  aoMap: graveARMTexture,
+  roughnessMap: graveARMTexture,
+  metalnessMap: graveARMTexture,
+  normalMap: graveNormalTexture,
+});
 
 const graves = new THREE.Group();
 scene.add(graves);
