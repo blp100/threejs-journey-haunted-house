@@ -446,12 +446,13 @@ const tick = () => {
 
   // Light
   const doorLightIntensity = elapsedTime * 2;
-  doorLight.intensity = Math.round(
-    Math.abs(
-      Math.cos(doorLightIntensity) * Math.sin(doorLightIntensity * 2.34)
-    ) *
-      (Math.random() * 0.2 + 0.8)
-  );
+  doorLight.intensity =
+    Math.round(
+      Math.abs(
+        Math.cos(doorLightIntensity) * Math.sin(doorLightIntensity * 2.34)
+      ) *
+        (Math.random() * 0.2 + 0.8)
+    ) * 5;
 
   // Ghost
   const ghost1Angle = elapsedTime * 0.5;
