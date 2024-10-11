@@ -100,6 +100,7 @@ for (let i = 0; i < 30; i++) {
 
   grave.rotation.x = (Math.random() - 0.5) * 0.4;
   grave.rotation.y = (Math.random() - 0.5) * 0.4;
+  grave.rotation.z = (Math.random() - 0.5) * 0.4;
 
   // Add to graves group
   graves.add(grave);
