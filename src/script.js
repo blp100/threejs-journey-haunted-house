@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { Timer } from "three/addons/misc/Timer.js";
 import GUI from "lil-gui";
+import { color } from "three/examples/jsm/nodes/Nodes.js";
 
 /**
  * Base
@@ -35,7 +36,7 @@ const walls = new THREE.Mesh(
   new THREE.BoxGeometry(4, 2.5, 4),
   new THREE.MeshStandardMaterial()
 );
-walls.position.y += 1.25;
+walls.position.y = 1.25;
 house.add(walls);
 
 // Roof
@@ -43,9 +44,18 @@ const roof = new THREE.Mesh(
   new THREE.ConeGeometry(3.5, 1.5, 4),
   new THREE.MeshStandardMaterial()
 );
-roof.position.y += 2.5 + 0.75;
+roof.position.y = 2.5 + 0.75;
 roof.rotation.y = Math.PI * 0.25;
 house.add(roof);
+
+// Door
+const door = new THREE.Mesh(
+  new THREE.PlaneGeometry(2.2, 2.2),
+  new THREE.MeshStandardMaterial()
+);
+door.position.y = 1.1;
+door.position.z = 2 + 0.01;
+house.add(door);
 
 /**
  * Lights
